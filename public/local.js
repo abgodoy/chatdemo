@@ -22,18 +22,32 @@ socket.on('chat', function(data){
 
 
 function sendMessage(event) {
+
 	console.log('SENDING: name: '+ nameInput.value + ', message: ' + messageInput.value);
 	socket.emit('chat', {name: nameInput.value, message: messageInput.value} );  
 }
 
 function displayNewMessage (username, message) {
+
+  var date, mon, yr, hh, mm, ss, ts;
+  var d = new Date();
+  mon = d.getMonth();
+  day = d.getDate();
+  yr =  d.getFullYear();
+  hh = d.getHours();
+  mm = d.getMinutes();
+  ss = d.getSeconds();
+  ts = '' +mon +'/' +day +'/' +yr + ' ' +hh +':' +mm +':' +ss + ' ';
+
+   console.log(ts);
+
   var newMessage = document.createElement('div');
   newMessage.className = 'message';
   var messageTextNode = document.createTextNode(': ' + message);
 
   var newMessageUser = document.createElement('span');
   newMessageUser.className = 'username';
-  newMessageUser.innerText = username;
+  newMessageUser.innerText = ts + ' ' +username;
   newMessage.appendChild(newMessageUser);
   newMessage.appendChild(messageTextNode);
 

@@ -16,7 +16,7 @@ window.addEventListener("keypress", function(event){
 
 // when "chat" event received, display message
 socket.on('chat', function(data){
-    console.log('RECEIVED: name: '+ data.name + ', message: ' + data.message);
+  console.log('RECEIVED: name: '+ data.name + ', message: ' + data.message);
 	displayNewMessage(data.name, data.message);
 });
 
@@ -24,7 +24,8 @@ socket.on('chat', function(data){
 function sendMessage(event) {
 
 	console.log('SENDING: name: '+ nameInput.value + ', message: ' + messageInput.value);
-	socket.emit('chat', {name: nameInput.value, message: messageInput.value} );  
+	socket.emit('chat', {name: nameinput.value, message: messageinput.value} ); 
+  messageinput.value = '';  // clear out text field after sending message
 }
 
 function displayNewMessage (username, message) {

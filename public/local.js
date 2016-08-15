@@ -37,7 +37,7 @@ function displayNewMessage (username, message) {
   yr =  d.getFullYear();
   hh = d.getHours();
   mm = d.getMinutes();
-  ss = d.getSeconds();
+  ss = addZero(d.getSeconds());
   ts = '' +mon +'/' +day +'/' +yr + ' ' +hh +':' +mm +':' +ss + ' ';
 
    console.log(ts);
@@ -57,3 +57,9 @@ function displayNewMessage (username, message) {
   window.scrollTo(0,document.body.scrollHeight);
 }
 
+function addZero(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+}
